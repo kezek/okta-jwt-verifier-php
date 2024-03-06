@@ -20,11 +20,9 @@ namespace Okta\JwtVerifier;
 class Jwt
 {
     public function __construct(
-        string $jwt,
-        array $claims
+        private string $jwt,
+        private array $claims
     ) {
-        $this->jwt = $jwt;
-        $this->claims = $claims;
     }
 
     public function getJwt()

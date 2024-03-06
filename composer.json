@@ -7,6 +7,10 @@
         {
             "name": "Brian Retterer",
             "email": "brian.retterer@okta.com"
+        },
+        {
+            "name": "Andrei Mocanu",
+            "email": "kezek.ma@gmail.com"
         }
     ],
     "autoload": {
