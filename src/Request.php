@@ -21,6 +21,8 @@ use Http\Client\Common\PluginClient;
 use Http\Client\HttpClient;
 use Http\Discovery\HttpClientDiscovery;
 use Http\Discovery\MessageFactoryDiscovery;
+use Http\Discovery\Psr17FactoryDiscovery;
+use Http\Discovery\Psr18ClientDiscovery;
 use Http\Discovery\UriFactoryDiscovery;
 use Http\Message\MessageFactory;
 use Http\Message\UriFactory;
@@ -53,11 +55,11 @@ class Request
         MessageFactory $messageFactory = null
     ) {
         $this->httpClient = new PluginClient(
-            $httpClient ?: HttpClientDiscovery::find()
+            $httpClient ?: Psr18ClientDiscovery::find()
         );
 
-        $this->uriFactory = $uriFactory ?: UriFactoryDiscovery::find();
-        $this->messageFactory = $messageFactory ?: MessageFactoryDiscovery::find();
+        $this->uriFactory = $uriFactory ?: Psr17FactoryDiscovery::findUriFactory();
+        $this->messageFactory = $messageFactory ?: Psr17FactoryDiscovery::findRequestFactory();
     }
 
     public function setUrl($url): Request
